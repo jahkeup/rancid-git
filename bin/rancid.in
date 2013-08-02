@@ -2065,6 +2065,7 @@ sub DoNothing {print STDOUT;}
 
 # Main
 @commandtable = (
+	{'terminal no exec prompt timestamp' => 'ShowVersion'},
 	{'show version'			=> 'ShowVersion'},
 	{'show redundancy secondary'	=> 'ShowRedundancy'},
 	{'show idprom backplane',	=> 'ShowIDprom'},
