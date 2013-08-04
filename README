@@ -120,6 +120,9 @@ git		Distributed version control system, an alternative to cvs or svn
 		Available from http://git-scm.com/downloads.  Use the configure
 		option --with-git to configure for Git.
 tcl		Required by expect.
+pygments	Code highlighter that highlights HTML Diff emails that rancid
+		sends out on changes.
+python		Required by pygments.
 
 Bill Fenner (now maintained by others) has a cgi script for interacting
 with CVS repositories via a web interface.  This provides a great way to
@@ -148,8 +151,12 @@ Quick Installation Guide (an example):
 
 	./configure --prefix=/home/rancid \
 			--localstatedir=/home/rancid/var/rancid
+   or:
+	./configure --prefix=/usr/local/ --localstatedir=/usr/local/var/rancid \
+		    --sysconfdir=/usr/local/etc/rancid
 
-   The user who will run rancid must have write permission in "localstatedir".
+   But that's up to you. The user who will run rancid must have write permission
+   in "localstatedir".
 
    See ./configure --help for other configure options.
 
