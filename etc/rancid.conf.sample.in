@@ -90,7 +90,11 @@ RCSSYS=@RCSSYS@; export RCSSYS
 #MAILDOMAIN="@example.com"; export MAILDOMAIN
 #
 # If you want to have colorised html mails with the diffs set this to YES
+# Note: this *requires* pygments be installed in PATH.
 #HTMLMAILS=YES; export HTMLMAILS
+# 
+# You can also specify the style for pygments to use:
+#PYGMENT_STYLE=native; export PYGMENT_STYLE
 #
 # By default, rancid mail is marked with precedence "bulk".  This may be
 # changed by setting the MAILHEADERS variable; for example no header by setting
