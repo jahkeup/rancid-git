@@ -595,7 +595,7 @@ case $RCSSYS in
 			# only perform if we have pygments, leave plain text alone.
 			if [ $? -eq 0 ]; then
 			    PYGMENT_STYLE=${PYGMENT_STYLE:-native}
-			    pygmentize -f html -l diff -O full,style="$PYGMENT_STYLE" $TMP.diff > $TMP-email.html
+			    pygmentize -f html -l diff -O full,noclasses,style="$PYGMENT_STYLE" $TMP.diff > $TMP-email.html
 			    mv $TMP-email.html $TMP.diff
 			fi
 		    fi
