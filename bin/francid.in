@@ -180,7 +180,7 @@ sub ShowVersion {
 	next if (/^(The system |Crash time)/);
 	next if (/^(System|(Active|Standby) Management|LP Slot \d+|Switch Fabric Module \d+) (uptime|Up Time) is/);
 	# remove uptime on newer switches
-	s/(STACKID \d+)\s+system uptime is.*$/$1/;
+	s/(STACKID \d+)\s+system uptime.*$/$1/;
 
 	s/^\s*(HW|SW)/$1/;
 	s/^\s*(Compiled on)/SW: $1/;
@@ -200,6 +200,23 @@ sub ShowVersion {
 	ProcessHistory("VERSION","","","!$_");
     }
     ProcessHistory("VERSION","","","!\n");
+    return(0);
+}
+
+# This routine parses "show media"
+sub ShowMedia {
+    my($slot);
+
+    print STDERR "    In ShowMedia: $_" if ($debug);
+
+    while (<INPUT>) {
+        tr/\015//d;
+        next if /^\s*$/;
+        last if (/^$prompt/);
+
+        ProcessHistory("MEDIA","","","!$_");
+    }
+    ProcessHistory("MEDIA","","","!\n");
     return(0);
 }
 
@@ -416,6 +433,7 @@ sub DoNothing {print STDOUT;}
 # Main
 @commandtable = (
 	{'show version'		=> 'ShowVersion'},
+	{'show media'		=> 'ShowMedia'},
 	{'show chassis'		=> 'ShowChassis'},
 	{'show module'		=> 'ShowModule'},
 	{'show flash'		=> 'ShowFlash'},
